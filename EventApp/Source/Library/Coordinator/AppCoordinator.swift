@@ -8,24 +8,22 @@
 
 import UIKit
 
-
-
-//protocol Coordinator {
-//    var childCoordinators: [Coordinator] { get set }
-//
-//    func start()
-//}
-
-final class AppCoordinator {
-    let window: UIWindow
-        
+class AppCoordinator: Coordinator {
+    private(set) var childCoordinators: [Coordinator] = []
+    var window: UIWindow
+    
     init(window: UIWindow) {
         self.window = window
     }
     
     func start() {
-        let vc = EventListViewController.instantiate()
-        let navigationController = UINavigationController(rootViewController: vc)
+        let navigationController = UINavigationController()
+        
+        let eventListCoordinator = EventListCoordinator(navigationController: navigationController)
+        childCoordinators.append(eventListCoordinator)
+        eventListCoordinator.start()
+        
         window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
 }
