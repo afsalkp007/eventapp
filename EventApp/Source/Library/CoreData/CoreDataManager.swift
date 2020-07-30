@@ -28,7 +28,9 @@ final  class CoreDataManager {
     func saveEvent(name: String, date: Date, image: UIImage) {
         let event = Event(context: moc)
         event.setValue(name, forKey: "name")
-        let imageData = image.jpegData(compressionQuality: 1)
+        
+        let resizedImage = image.sameAspectRatio(newHeight: 250.0)
+        let imageData = resizedImage.jpegData(compressionQuality: 1)
         event.setValue(imageData, forKey: "image")
         event.setValue(date, forKey: "date")
         
@@ -47,6 +49,16 @@ final  class CoreDataManager {
         } catch {
             print(error.localizedDescription)
             return []
+        }
+    }
+    
+    func getEvents(_ id: NSManagedObjectID) -> Event? {
+        do {
+            let event = try moc.existingObject(with: id)
+            return event as? Event
+        } catch {
+            print(error.localizedDescription)
+            return nil
         }
     }
 }

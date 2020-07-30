@@ -77,6 +77,9 @@ final class EventCell: UITableViewCell {
     }
     
     func update(with viewModel: EventCellViewModel) {
+        timeRemainingLabels.forEach {
+            $0.text = ""
+        }
         viewModel.timeRemainingStrings.enumerated().forEach {
             timeRemainingLabels[$0.offset].text = $0.element
         }

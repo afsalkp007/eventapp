@@ -66,5 +66,34 @@
             </objects>
             <point key="canvasLocation" x="857" y="5"/>
         </scene>
+        <!--Event Detail View Controller-->
+        <scene sceneID="qN3-xN-ptf">
+            <objects>
+                <viewController storyboardIdentifier="EventDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kKc-vi-LqM" customClass="EventDetailViewController" customModule="EventApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bUG-2c-XLL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gnj-0Y-gNk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gnj-0Y-gNk" secondAttribute="trailing" id="EzH-lP-Py1"/>
+                            <constraint firstItem="gnj-0Y-gNk" firstAttribute="top" secondItem="bUG-2c-XLL" secondAttribute="top" id="Kx7-fO-1ZH"/>
+                            <constraint firstItem="gnj-0Y-gNk" firstAttribute="leading" secondItem="bUG-2c-XLL" secondAttribute="leading" id="RfX-ir-lav"/>
+                            <constraint firstAttribute="bottom" secondItem="gnj-0Y-gNk" secondAttribute="bottom" id="hta-DA-DDf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pct-65-WkZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="gnj-0Y-gNk" id="c0O-dI-Wtu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Fu-Sv-4VS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1536" y="30"/>
+        </scene>
     </scenes>
 </document>
