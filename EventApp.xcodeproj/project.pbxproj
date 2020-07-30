@@ -33,6 +33,7 @@
 		C2CC576924D2A5B200573CFC /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CC576824D2A5B200573CFC /* EventCell.swift */; };
 		C2CC576B24D2A8BB00573CFC /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CC576A24D2A8BB00573CFC /* UIView+Ext.swift */; };
 		C2CC576D24D2DA8F00573CFC /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CC576C24D2DA8F00573CFC /* Date+Ext.swift */; };
+		C2CC576F24D2F1FE00573CFC /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CC576E24D2F1FE00573CFC /* UIImage+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		C2CC576824D2A5B200573CFC /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		C2CC576A24D2A8BB00573CFC /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		C2CC576C24D2DA8F00573CFC /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		C2CC576E24D2F1FE00573CFC /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				C28D62DF24D054B20072FF98 /* UIViewController+Ext.swift */,
 				C2CC576A24D2A8BB00573CFC /* UIView+Ext.swift */,
 				C2CC576C24D2DA8F00573CFC /* Date+Ext.swift */,
+				C2CC576E24D2F1FE00573CFC /* UIImage+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				C2CC576724D2A4B300573CFC /* EventCellViewModel.swift in Sources */,
 				C28D62E724D087450072FF98 /* TitleSubtitleCell.swift in Sources */,
 				C23B555E24D02705003BAA08 /* EventApp.xcdatamodeld in Sources */,
+				C2CC576F24D2F1FE00573CFC /* UIImage+Ext.swift in Sources */,
 				C28D62E224D055F20072FF98 /* AddEventViewModel.swift in Sources */,
 				C2CC576524D1BC7B00573CFC /* CellBuilder.swift in Sources */,
 				C23B555924D0246E003BAA08 /* Storyboarded.swift in Sources */,
