@@ -12,7 +12,7 @@ import UIKit
 final class AddEventViewModel {
     
     let title = "Add"
-    var onUpdate: () -> Void = {}
+    var onUpdate: (() -> Void)?
     
     enum Cell {
         case titleSubtitle(TitleSubtitleCellViewModel)
@@ -20,19 +20,33 @@ final class AddEventViewModel {
     
     private(set) var cells: [Cell] = []
     
-    var coordinator: AddEventCoordinator?
+    weak var coordinator: AddEventCoordinator?
     
     private var nameCellViewModel: TitleSubtitleCellViewModel?
     private var dateCellViewModel: TitleSubtitleCellViewModel?
     private var backgroundImageCellViewModel: TitleSubtitleCellViewModel?
     
+    private let cellBuilder: CellBuilder
+    private let coreDataManager: CoreDataManager
+    
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yy"
+        return dateFormatter
+    }()
+    
+    init(cellBuilder: CellBuilder, coreDataManager: CoreDataManager = CoreDataManager.shared) {
+        self.cellBuilder = cellBuilder
+        self.coreDataManager = coreDataManager
+    }
+    
     func viewDidLoad() {
         setupCells()
-        onUpdate()
+        onUpdate?()
     }
     
     func viewDidDisappear() {
-        coordinator?.didFinishAddEvent()
+        coordinator?.didFinish()
     }
     
     func numberOfRows() -> Int {
@@ -63,7 +77,14 @@ final class AddEventViewModel {
     }
     
     func tappedDone() {
-        print(#function)
+        guard
+            let name = nameCellViewModel?.subTitle,
+            let dateString = dateCellViewModel?.subTitle,
+            let image = backgroundImageCellViewModel?.image,
+            let date = dateFormatter.date(from: dateString)
+            else { return }
+        coreDataManager.saveEvent(name: name, date: date, image: image)
+        coordinator?.didFinishSaveEvent()
     }
     
     func updateCell(indexPath: IndexPath, subTitle: String) {
@@ -76,13 +97,13 @@ final class AddEventViewModel {
 
 private extension AddEventViewModel {
     func setupCells() {
-        nameCellViewModel = TitleSubtitleCellViewModel(title: "Name", subTitle: "", placeholder: "Add name", type: .text, onCellUpdate: {})
-        dateCellViewModel = TitleSubtitleCellViewModel(title: "Date", subTitle: "", placeholder: "Add a date", type: .date, onCellUpdate: { [weak self] in
-            self?.onUpdate()
-        })
-        backgroundImageCellViewModel = TitleSubtitleCellViewModel(title: "Background", subTitle: "", placeholder: "", type: .image, onCellUpdate: { [weak self] in
-            self?.onUpdate()
-        })
+        nameCellViewModel = cellBuilder.makeTitleSubtitleCellViewModel(.text)
+        dateCellViewModel = cellBuilder.makeTitleSubtitleCellViewModel(.date) { [weak self] in
+            self?.onUpdate?()
+        }
+        backgroundImageCellViewModel = cellBuilder.makeTitleSubtitleCellViewModel(.image) { [weak self] in
+            self?.onUpdate?()
+        }
         
         guard let nameCellViewModel = nameCellViewModel, let dateCellViewModel = dateCellViewModel, let backgroundImageCellViewModel = backgroundImageCellViewModel else { return }
         

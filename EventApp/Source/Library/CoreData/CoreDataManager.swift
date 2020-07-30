@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 
 final  class CoreDataManager {
+    
+    static let shared = CoreDataManager()
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let persistentContainer = NSPersistentContainer(name: "EventApp")
         persistentContainer.loadPersistentStores(completionHandler: {_, error in

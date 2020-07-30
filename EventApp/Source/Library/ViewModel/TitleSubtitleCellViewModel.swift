@@ -27,9 +27,9 @@ final class TitleSubtitleCellViewModel {
         dateFormatter.dateFormat = "dd.MM.yyy"
         return dateFormatter
     }()
-    private(set) var onCellUpdate: () -> Void = {}
+    private(set) var onCellUpdate: (() -> Void)?
     
-    init(title: String, subTitle: String, placeholder: String, type: CellType, onCellUpdate: @escaping () -> Void) {
+    init(title: String, subTitle: String, placeholder: String, type: CellType, onCellUpdate: (() -> Void)?) {
         self.title = title
         self.subTitle = subTitle
         self.placeholder = placeholder
@@ -44,12 +44,12 @@ final class TitleSubtitleCellViewModel {
     func udpate(_ date: Date) {
         let dateString = dateFormatter.string(from: date)
         self.subTitle = dateString
-        onCellUpdate()
+        onCellUpdate?()
     }
     
     func update(_ image: UIImage) {
         self.image = image
-        onCellUpdate()
+        onCellUpdate?()
     }
     
     func heightForRow() -> CGFloat {
