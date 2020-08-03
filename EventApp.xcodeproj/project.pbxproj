@@ -21,6 +21,7 @@
 		C23B556024D027F7003BAA08 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23B555F24D027F7003BAA08 /* CoreDataManager.swift */; };
 		C2472EBE24D33EE300777D2A /* TimeRemainingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2472EBD24D33EE300777D2A /* TimeRemainingStackView.swift */; };
 		C2472EC024D3417A00777D2A /* TimeRemainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2472EBF24D3417A00777D2A /* TimeRemainingViewModel.swift */; };
+		C24C05DE24D80B5B00F333F3 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24C05DD24D80B5B00F333F3 /* EventService.swift */; };
 		C25194C224D6D71600689174 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25194C124D6D71600689174 /* EditEventViewController.swift */; };
 		C28D62CE24D02D6E0072FF98 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D62CD24D02D6E0072FF98 /* UIColor+Ext.swift */; };
 		C28D62D124D02E0A0072FF98 /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28D62D024D02E0A0072FF98 /* EventListViewModel.swift */; };
@@ -61,6 +62,7 @@
 		C23B555F24D027F7003BAA08 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C2472EBD24D33EE300777D2A /* TimeRemainingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRemainingStackView.swift; sourceTree = "<group>"; };
 		C2472EBF24D3417A00777D2A /* TimeRemainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRemainingViewModel.swift; sourceTree = "<group>"; };
+		C24C05DD24D80B5B00F333F3 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		C25194C124D6D71600689174 /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
 		C28D62CD24D02D6E0072FF98 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		C28D62D024D02E0A0072FF98 /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		C23B555424D0240C003BAA08 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				C24C05DC24D80B4100F333F3 /* Services */,
 				C2CC576324D1BC7100573CFC /* Builder */,
 				C28D62E524D087330072FF98 /* View */,
 				C28D62CF24D02E000072FF98 /* ViewModel */,
@@ -220,6 +223,14 @@
 				C23B555F24D027F7003BAA08 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C24C05DC24D80B4100F333F3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C24C05DD24D80B5B00F333F3 /* EventService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C28D62CC24D02D5F0072FF98 /* Extension */ = {
@@ -359,6 +370,7 @@
 				C2CC576224D1A12300573CFC /* ImagePickerCoordinator.swift in Sources */,
 				C28D62E024D054B20072FF98 /* UIViewController+Ext.swift in Sources */,
 				C21104B124D6D4A2006EB627 /* EditEventViewModel.swift in Sources */,
+				C24C05DE24D80B5B00F333F3 /* EventService.swift in Sources */,
 				C2CC576D24D2DA8F00573CFC /* Date+Ext.swift in Sources */,
 				C2472EBE24D33EE300777D2A /* TimeRemainingStackView.swift in Sources */,
 				C23B553F24D01832003BAA08 /* EventListViewController.swift in Sources */,

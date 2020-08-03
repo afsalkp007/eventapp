@@ -25,14 +25,7 @@ final  class CoreDataManager {
         return persistentContainer.viewContext
     }
     
-    func updateEvent(event: Event, name: String, date: Date, image: UIImage) {
-        event.setValue(name, forKey: "name")
-        
-        let resizedImage = image.sameAspectRatio(newHeight: 250.0)
-        let imageData = resizedImage.jpegData(compressionQuality: 1)
-        event.setValue(imageData, forKey: "image")
-        event.setValue(date, forKey: "date")
-        
+    func save() {
         do {
             try moc.save()
         } catch {
@@ -40,40 +33,30 @@ final  class CoreDataManager {
         }
     }
     
-    func saveEvent(name: String, date: Date, image: UIImage) {
-        let event = Event(context: moc)
-        event.setValue(name, forKey: "name")
-        
-        let resizedImage = image.sameAspectRatio(newHeight: 250.0)
-        let imageData = resizedImage.jpegData(compressionQuality: 1)
-        event.setValue(imageData, forKey: "image")
-        event.setValue(date, forKey: "date")
-        
-        do {
-            try moc.save()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func fetchEvents() -> [Event] {
-        do {
-            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
-            let events = try moc.fetch(fetchRequest)
-            return events
-        } catch {
-            print(error.localizedDescription)
-            return []
-        }
-    }
-    
-    func getEvents(_ id: NSManagedObjectID) -> Event? {
+    func getEvent<T: NSManagedObject>(_ id: NSManagedObjectID) -> T? {
         do {
             let event = try moc.existingObject(with: id)
-            return event as? Event
+            return event as? T
         } catch {
             print(error.localizedDescription)
             return nil
         }
     }
+    
+    func getAll<T: NSManagedObject>() -> [T] {
+        do {
+            let fetchRequest = NSFetchRequest<T>(entityName: "\(T.self)")
+            
+//            let backgroundContext = persistentContainer.newBackgroundContext()
+//            backgroundContext.perform {
+//                return try moc.fetch(fetchRequest)
+//            }
+            return try moc.fetch(fetchRequest)
+            
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+   
 }

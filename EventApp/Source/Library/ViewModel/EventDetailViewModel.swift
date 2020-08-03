@@ -11,7 +11,7 @@ import CoreData
 
 final class EventDetailViewModel {
     
-    private let coreDataManager: CoreDataManager
+    private let eventService: EventServiceProtocol
     private let eventId: NSManagedObjectID
     private var event: Event?
     private let date = Date()
@@ -28,8 +28,8 @@ final class EventDetailViewModel {
         return TimeRemainingViewModel(timeRemainingParts: timeRemainingParts, mode: .detail)
     }
     
-    init(eventId: NSManagedObjectID, coreDataManager: CoreDataManager = .shared) {
-        self.coreDataManager = coreDataManager
+    init(eventId: NSManagedObjectID, eventService: EventServiceProtocol = EventService()) {
+        self.eventService = eventService
         self.eventId = eventId
     }
     
@@ -42,7 +42,7 @@ final class EventDetailViewModel {
     }
     
     func reload() {
-        event = coreDataManager.getEvents(eventId)
+        event = eventService.getEvent(eventId) 
         onUpdate()
     }
     
